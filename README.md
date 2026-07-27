@@ -11,9 +11,13 @@ Convert editable Word tables into a standalone interactive process or decision-f
 - [Example QA report](output/flow_diagram_example/qa_report.md)
 - [Automated tests](tests/test_render_flow_diagram.py)
 
-After enabling GitHub Pages, the live demonstration will be:
+## Live Demo
 
-https://cloudpedagogy.github.io/cloudpedagogy-word-flow-diagram-renderer/output/flow_diagram_example/
+[View the Word Flow Diagram Renderer demo](http://cloudpedagogy-word-flow-diagram-renderer.s3-website.eu-west-2.amazonaws.com/)
+
+## Screenshot
+
+![Word Flow Diagram Renderer screenshot](img/screenshot.png)
 
 ## Quick start
 
