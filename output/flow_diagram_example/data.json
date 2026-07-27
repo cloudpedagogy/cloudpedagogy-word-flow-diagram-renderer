@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.0",
+  "generator_version": "1.0.0",
+  "settings": {
+    "title": "Online Course Development Workflow",
+    "subtitle": "A generic quality-assured route from proposal to Moodle publication",
+    "orientation": "LR",
+    "theme": "light",
+    "show_legend": "true",
+    "allow_orientation_switching": "true"
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "label": "Course proposal",
+      "type": "terminal",
+      "description": "Initial course or module proposal is agreed.",
+      "status": "Approved",
+      "color": "#DCFCE7",
+      "link": "",
+      "group": "Planning"
+    },
+    {
+      "id": "draft",
+      "label": "Academic drafting",
+      "type": "process",
+      "description": "Academic author prepares structured learning content.",
+      "status": "In progress",
+      "color": "#DBEAFE",
+      "link": "",
+      "group": "Development"
+    },
+    {
+      "id": "review",
+      "label": "Digital education review",
+      "type": "process",
+      "description": "Learning design, structure and interaction review.",
+      "status": "Pending",
+      "color": "#DBEAFE",
+      "link": "",
+      "group": "Development"
+    },
+    {
+      "id": "revise",
+      "label": "Revisions required?",
+      "type": "decision",
+      "description": "Decide whether substantive changes are needed.",
+      "status": "Decision",
+      "color": "#FEF3C7",
+      "link": "",
+      "group": "Review"
+    },
+    {
+      "id": "update",
+      "label": "Revise content",
+      "type": "process",
+      "description": "Author responds to review findings.",
+      "status": "Pending",
+      "color": "#FEE2E2",
+      "link": "",
+      "group": "Development"
+    },
+    {
+      "id": "access",
+      "label": "Accessibility check",
+      "type": "process",
+      "description": "Check headings, links, tables, media and alternatives.",
+      "status": "Pending",
+      "color": "#EDE9FE",
+      "link": "",
+      "group": "Assurance"
+    },
+    {
+      "id": "approve",
+      "label": "Academic approval",
+      "type": "decision",
+      "description": "Confirm that content is accurate and ready to release.",
+      "status": "Pending",
+      "color": "#FEF3C7",
+      "link": "",
+      "group": "Assurance"
+    },
+    {
+      "id": "publish",
+      "label": "Publish to Moodle",
+      "type": "process",
+      "description": "Create the learner-facing version and verify settings.",
+      "status": "Pending",
+      "color": "#DBEAFE",
+      "link": "https://moodle.org/",
+      "group": "Publication"
+    },
+    {
+      "id": "qa",
+      "label": "Post-publication QA",
+      "type": "document",
+      "description": "Record the final quality assurance outcome.",
+      "status": "Pending",
+      "color": "#FCE7F3",
+      "link": "",
+      "group": "Publication"
+    },
+    {
+      "id": "end",
+      "label": "Course available",
+      "type": "terminal",
+      "description": "The approved course is available to learners.",
+      "status": "Ready",
+      "color": "#DCFCE7",
+      "link": "",
+      "group": "Publication"
+    }
+  ],
+  "links": [
+    {
+      "source": "start",
+      "target": "draft",
+      "label": "Begin",
+      "style": "solid",
+      "color": "",
+      "description": "Start content production."
+    },
+    {
+      "source": "draft",
+      "target": "review",
+      "label": "Submit",
+      "style": "solid",
+      "color": "",
+      "description": "Send draft for review."
+    },
+    {
+      "source": "review",
+      "target": "revise",
+      "label": "",
+      "style": "solid",
+      "color": "",
+      "description": "Review produces a decision."
+    },
+    {
+      "source": "revise",
+      "target": "update",
+      "label": "Yes",
+      "style": "dashed",
+      "color": "#DC2626",
+      "description": "Changes are required."
+    },
+    {
+      "source": "update",
+      "target": "review",
+      "label": "Resubmit",
+      "style": "dashed",
+      "color": "#DC2626",
+      "description": "Return revised content for review."
+    },
+    {
+      "source": "revise",
+      "target": "access",
+      "label": "No",
+      "style": "solid",
+      "color": "#15803D",
+      "description": "Proceed to accessibility checking."
+    },
+    {
+      "source": "access",
+      "target": "approve",
+      "label": "Pass",
+      "style": "solid",
+      "color": "",
+      "description": "Send accessible version for approval."
+    },
+    {
+      "source": "approve",
+      "target": "update",
+      "label": "Not yet",
+      "style": "dashed",
+      "color": "#DC2626",
+      "description": "Return to revision."
+    },
+    {
+      "source": "approve",
+      "target": "publish",
+      "label": "Approved",
+      "style": "thick",
+      "color": "#15803D",
+      "description": "Proceed to publication."
+    },
+    {
+      "source": "publish",
+      "target": "qa",
+      "label": "Verify",
+      "style": "solid",
+      "color": "",
+      "description": "Perform checks in the live course."
+    },
+    {
+      "source": "qa",
+      "target": "end",
+      "label": "Release",
+      "style": "thick",
+      "color": "#15803D",
+      "description": "Make the course available."
+    }
+  ]
+}
