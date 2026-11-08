@@ -379,6 +379,9 @@ def build_html(result: ParseResult, mermaid_js: str) -> str:
     initial = result.settings["orientation"]
     switch = as_bool(result.settings.get("allow_orientation_switching", "true"))
     show_legend = as_bool(result.settings.get("show_legend", "true"))
+    data_json_str = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+    diagrams_json_str = json.dumps(diagrams, ensure_ascii=False).replace("</", "<\\/")
+    maps_json_str = json.dumps(id_maps, ensure_ascii=False).replace("</", "<\\/")
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title><style>
@@ -407,9 +410,9 @@ main{{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px;padding:14
 <div class="legend" {'hidden' if not show_legend else ''}>{''.join(f'<span class="key"><i class="swatch" style="background:{c}"></i>{html.escape(t.title())}</span>' for t,c in DEFAULT_COLORS.items())}</div></aside></main>
 <table class="fallback"><caption>Flow diagram data</caption><thead><tr><th>Node</th><th>Type</th><th>Description</th></tr></thead><tbody>{''.join(f"<tr><td>{html.escape(n['label'])}</td><td>{html.escape(n['type'])}</td><td>{html.escape(n['description'])}</td></tr>" for n in result.nodes)}</tbody></table>
 <script>{mermaid_js}</script><script>
-const DATA={json.dumps(data, ensure_ascii=False).replace("</", "<\\/")};
-const DIAGRAMS={json.dumps(diagrams, ensure_ascii=False).replace("</", "<\\/")};
-const MAPS={json.dumps(id_maps, ensure_ascii=False).replace("</", "<\\/")};
+const DATA={data_json_str};
+const DIAGRAMS={diagrams_json_str};
+const MAPS={maps_json_str};
 let orientation={json.dumps(initial)}, scale=1;
 const box=document.getElementById("diagram"), viewport=document.querySelector(".viewport"), detail=document.getElementById("detail");
 document.getElementById("orientation").value=orientation;
